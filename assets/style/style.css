@@ -7,7 +7,11 @@
         color: var(--mred);
         font-family: "monoton";
     }
-    
+    body {
+        background-color: var(--myellow);
+    }
+
+
     .title {
         align-items:center;
     }
@@ -17,26 +21,23 @@
     }
     
     .background-image {
+        background-color: var(--myellow);
         display: flex;
         opacity: .80;
         /* margin: auto; */
         /* height: 200px; */
         /* width: 200px; */
-
-
-
-
-img {
-    width: 200px;
-}
     }
+
+
 
     button {
         font-family: "monoton";
         background-color: var(--myellow);
         color: var(--mred);
-        margin-left: 400px;
-        border-radius: 15%;
+        margin-left: 500px;
+        border-color: var(--mred);
+        border-radius:  20px;
         color: var(--mred);
         height: 100px;
         width: 350px;
