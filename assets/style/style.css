@@ -1,0 +1,12 @@
+:root {
+--myellow:#f4bf44;
+--mred: #cc2b1f;
+}
+*{
+    background-color: var(--myellow);
+    color: var(--mred);
+}
+
+.title {
+    align-items:center;
+}
