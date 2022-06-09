@@ -53,7 +53,7 @@ function printRestaurantResults(data){
     
 }
 
-function printRestaurantDetails(){
+function printRestaurantDetails(data){
 
 }
 
@@ -72,3 +72,13 @@ function getRandomFoodImages(){
 function printRandomFoodImages(){
     // console.log(randomImageArray[2]);
 }
+
+function getRestaurantDetails(id){
+    fetch(`https://api.yelp.com/v3/businesses/${id}`)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data) {
+        printRestaurantDetails(data)
+    })
+};
