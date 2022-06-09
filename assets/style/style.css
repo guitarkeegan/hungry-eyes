@@ -33,6 +33,8 @@
 
     button {
         font-family: "monoton";
+        position:relative;
+        font-size: 40px;
         background-color: var(--myellow);
         color: var(--mred);
         margin-left: 500px;
