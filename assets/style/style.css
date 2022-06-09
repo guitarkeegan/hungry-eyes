@@ -1,1 +1,43 @@
+:root {
+    --myellow:#f4bf44;
+    --mred: #cc2b1f;
+    }
+    *{
+        background-color: var(--myellow);
+        color: var(--mred);
+        font-family: "monoton";
+    }
+    
+    .title {
+        align-items:center;
+    }
+    .title-text {
+        font-size: 90px;
+        margin-left: 150px;
+    }
+    
+    .background-image {
+        display: flex;
+        opacity: .80;
+        /* margin: auto; */
+        /* height: 200px; */
+        /* width: 200px; */
 
+
+
+
+img {
+    width: 200px;
+}
+    }
+
+    button {
+        font-family: "monoton";
+        background-color: var(--myellow);
+        color: var(--mred);
+        margin-left: 400px;
+        border-radius: 15%;
+        color: var(--mred);
+        height: 100px;
+        width: 350px;
+    }
