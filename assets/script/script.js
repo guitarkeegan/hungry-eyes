@@ -58,20 +58,17 @@ function printRestaurantDetails(data){
 }
 
 function getRandomFoodImages(){
-    // for (let i=0;i<10;i++){
+
+    for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
-        .then(data=>randomImageArray.push(data.image));
-
-    // }
-    console.log(randomImageArray[0]);
-    // console.log(typeof randomImageArray[0]);
-    // printRandomFoodImages();
+        .then(data=>{
+            randomImageArray.push(data.image);
+        })
+    }
+    printRandomFoodImages();
 }
 
-function printRandomFoodImages(){
-    // console.log(randomImageArray[2]);
-}
 
 function getRestaurantDetails(id){
     fetch(`https://api.yelp.com/v3/businesses/${id}`)
@@ -82,3 +79,5 @@ function getRestaurantDetails(id){
         printRestaurantDetails(data)
     })
 };
+
+
