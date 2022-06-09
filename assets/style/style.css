@@ -6,32 +6,84 @@
         background-color: var(--myellow);
         color: var(--mred);
         font-family: "monoton";
+        position: relative;
     }
     body {
         background-color: var(--myellow);
     }
 
 
-    .title {
+    /* .title {
         align-items:center;
-    }
+    } */
     .title-text {
         font-size: 90px;
-        margin-left: 150px;
+        /* need to replace the margin left wither with a center,flex or bootstrap */
+        margin-left: 450px;
     }
     
     .background-image {
         background-color: var(--myellow);
         display: flex;
         opacity: .80;
+        border-radius: 4%;
         /* margin: auto; */
         /* height: 200px; */
         /* width: 200px; */
     }
+    .map{
+        border: solid;
+    font-size: 50px;
+    color: var(--mred);
+    margin-left: 500px;
+    border-color: var(--mred);
+    border-radius:  20px;
+    border-width: 5px;
+    color: var(--mred);
+    height: 100px;
+    width: 350px;
+    z-index: 3;
+    margin-top: 20px;
 
-
-
-    button {
+    }
+    .near-you {
+    border: solid;
+    font-size: 50px;
+    color: var(--mred);
+    margin-left: 600px;
+    border-color: var(--mred);
+    border-radius:  20px;
+    border-width: 5px;
+    color: var(--mred);
+    height: 100px;
+    width: 350px;
+    z-index: 3;
+    margin-top: 20px;
+}
+.what-to-eat {
+    font-size: 46px;
+    z-index: 2;
+    height: 100px;
+    width: 650px;
+    margin-left: 500px;
+}   
+.choices {
+    font-size: 46px;
+    border-color: var(--mred);
+    border-radius:  20px;
+    height: 100px;
+    width: 650px;
+}
+.still {
+    height:300px;
+    width: 600px;
+    margin-right: 180px;
+}
+.map{
+    height:300px;
+    width: 600px;
+}
+button {
         font-family: "monoton";
         position:relative;
         font-size: 40px;
@@ -40,7 +92,13 @@
         margin-left: 500px;
         border-color: var(--mred);
         border-radius:  20px;
+        border-width: 5px;
         color: var(--mred);
         height: 100px;
         width: 350px;
     }
+
+
+title:hover{
+animation: fadeIn 5s; 
+}
