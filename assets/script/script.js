@@ -58,6 +58,7 @@ function printRestaurantDetails(){
 }
 
 function getRandomFoodImages(){
+
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
