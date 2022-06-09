@@ -7,7 +7,7 @@ let userLon = "";
 let searchedCategory = "";
 let limit = 5;
 
-function getResaurants(){
+function getRestaurants(){
     let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${userLat}&lon=${userLon}&categories=${searchedCategory}&limit=${limit}`
     fetch(yelpEndpoint, {
         headers: {
