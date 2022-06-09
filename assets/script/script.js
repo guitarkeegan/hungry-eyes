@@ -8,6 +8,7 @@ let searchedFoodImage = "";
 let searchedCategory = "";
 let limit = 5;
 let id = "";
+let randomImageArray = [];
 
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
@@ -25,7 +26,7 @@ function getUserLocation(){
 
 
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lot}&categories=${searchedCategory}&limit=${limit}`
+    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&categories=${searchedCategory}&limit=${limit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -36,7 +37,7 @@ function getRestaurantsByLatLon(lat, lon){
 }
 
 function getRestuarantsByCity(city){
-    
+
 }
 
 
@@ -54,4 +55,20 @@ function printRestaurantResults(data){
 
 function printRestaurantDetails(){
 
+}
+
+function getRandomFoodImages(){
+    // for (let i=0;i<10;i++){
+        fetch("https://foodish-api.herokuapp.com/api/")
+        .then(response=>response.json())
+        .then(data=>randomImageArray.push(data.image));
+
+    // }
+    console.log(randomImageArray[0]);
+    // console.log(typeof randomImageArray[0]);
+    // printRandomFoodImages();
+}
+
+function printRandomFoodImages(){
+    // console.log(randomImageArray[2]);
 }
