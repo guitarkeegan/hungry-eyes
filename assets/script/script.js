@@ -4,8 +4,10 @@
 // 
 let userLat = "";
 let userLon = "";
+let searchedFoodImage = "";
 let searchedCategory = "";
 let limit = 5;
+let id = "";
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
 //     console.log(pos)
@@ -19,5 +21,22 @@ function getRestaurants(){
         }
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => printRestaurantData(data));
+}
+
+
+function printRestaurantResults(data){
+    for (let i=0;i<data.businesses.length();i++){
+        id = data.businesses[i].id;
+        const name = data.businesses[i].name;
+        const rating = data.businesses[i].rating;
+        // searchedFoodImage
+        const imageUrl = data.businesses[i].image_url;
+        const phoneNumber = data.businesses[i].phone;
+    }
+    
+}
+
+function printRestaurantDetails(){
+
 }
