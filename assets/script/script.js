@@ -43,11 +43,13 @@ function getRestaurantsByLatLon(lat, lon){
         }
     })
     .then(response => response.json())
-    .then(data => printRestaurantData(data));
+    .then(data => printRestaurantResults(data));
 }
 
 function getRestuarantsByCity(city){
-    fetch(`https://api.yelp.com/v3/businesses/search?location=${searchedCity}&term=${searchedTerm}&limit=${resultsLimit}`)
+    fetch(`https://api.yelp.com/v3/businesses/search?location=${city}&term=${searchedTerm}&limit=${resultsLimit}`)
+    .then(response=>response.json())
+    .then(data=>printRestaurantResults(data));
 }
 
 
