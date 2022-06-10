@@ -45,7 +45,7 @@ function showModal(){
 
 
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
+    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -56,7 +56,11 @@ function getRestaurantsByLatLon(lat, lon){
 }
 
 function getRestuarantsByCity(city){
-    fetch(`https://api.yelp.com/v3/businesses/search?location=${city}&term=${searchedTerm}&limit=${resultsLimit}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city}&term=${searchedTerm}&limit=${resultsLimit}`,{
+        headers: {
+            Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
+        }
+    })
     .then(response=>response.json())
     .then(data=>printRestaurantResults(data));
 }
@@ -73,11 +77,8 @@ function printRestaurantResults(data){
     
     }
 }
-// TODO: decide what information we need from the get restaurant details function
-function printRestaurantDetails(data){
-    // lat and lon
-    // whatever else
-}
+
+
 
 function getRandomFoodImages(){
     for (let i=0;i<6;i++){
@@ -100,7 +101,12 @@ function printRandomFoodImages(imageArrayIndex){
 
 
 function getRestaurantDetails(id){
-    fetch(`https://api.yelp.com/v3/businesses/${id}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,{
+            headers: {
+                Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
+            }
+        
+    })
     .then(function(response){
         return response.json();
     })
@@ -108,6 +114,18 @@ function getRestaurantDetails(id){
         printRestaurantDetails(data)
     })
 };
+
+function printRestaurantDetails(data){
+    var restaurantName = data.name;
+    var restaurantAddress = data.location.display_address.join("\n")
+    var restaurantPhone = data.display_phone;
+    var restaurantPhoto = data.photos[0]
+    var dailyHours = [];
+    for(let i=0; i<data.open.length;i++) {
+
+    }
+    //0 is Monday
+}
 
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function
