@@ -1,6 +1,7 @@
 :root {
     --myellow:#f4bf44;
     --mred: #cc2b1f;
+    --mwhite: #f5f1e7;
     }
     *{
         background-color: var(--myellow);
@@ -23,10 +24,12 @@
     }
     
     .background-image {
-        background-color: var(--myellow);
+        border-color: var(--mwhite);
+        border:10px solid;
+        border-width: 40px;
         display: flex;
         opacity: .80;
-        border-radius: 4%;
+        border-radius: 1%;
         /* margin: auto; */
         /* height: 200px; */
         /* width: 200px; */
@@ -106,41 +109,42 @@ button {
     margin: 400px;
 }
 
+
     /* #0 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
     }
     #1 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
     }
     #2 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
     }
    #3 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
    }
    #4 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
     }
    #5 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
-    border: size 5px;
+    border: size 10px;
    }
  */
 
