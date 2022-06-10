@@ -22,7 +22,7 @@ $(".random-img-div").on("click", function(event){
     // uncomment bellow to start the yelp search process
     // getUserLocation()
 });
-$(".still").on("click", function(){
+$(".choices").on("click", function(){
     getRandomFoodImages();
 });
 
@@ -43,7 +43,7 @@ function showModal(){
     return "modal";
 }
 
-// TODO: double check that we are getting the desired category
+
 function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
@@ -61,7 +61,7 @@ function getRestuarantsByCity(city){
     .then(data=>printRestaurantResults(data));
 }
 
-
+// TODO: decide where to display results
 function printRestaurantResults(data){
     for (let i=0;i<data.businesses.length();i++){
         id = data.businesses[i].id;
@@ -70,11 +70,13 @@ function printRestaurantResults(data){
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
+    
     }
 }
 // TODO: decide what information we need from the get restaurant details function
 function printRestaurantDetails(data){
-
+    // lat and lon
+    // whatever else
 }
 
 function getRandomFoodImages(){
@@ -103,4 +105,6 @@ function getRestaurantDetails(id){
     })
 };
 
-
+// TODO: CREATE FUNCTION FOR LOCAL STORAGE
+// TODO: Get from local storage function
+// TODO: display from local storage function
