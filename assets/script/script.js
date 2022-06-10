@@ -5,8 +5,9 @@
 let userLat = "";
 let userLon = "";
 let searchedFoodImage = "";
-let searchedCategory = "";
-let limit = 5;
+let searchedTerm = "";
+let searchedCity = "";
+let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
 // event listeners
@@ -16,8 +17,8 @@ $(".what-to-eat").on("click", function(){
 // random food images
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.name.split("/");
-    searchedCategory = urlArray[urlArray.length - 2];
-    console.log(searchedCategory);
+    searchedTerm = urlArray[urlArray.length - 2];
+    console.log(searchedTerm);
 });
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
@@ -35,7 +36,7 @@ function getUserLocation(){
 
 // TODO: double check that we are getting the desired category
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&categories=${searchedCategory}&limit=${limit}`
+    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -46,7 +47,7 @@ function getRestaurantsByLatLon(lat, lon){
 }
 
 function getRestuarantsByCity(city){
-
+    fetch(`https://api.yelp.com/v3/businesses/search?location=${searchedCity}&term=${searchedTerm}&limit=${resultsLimit}`)
 }
 
 
