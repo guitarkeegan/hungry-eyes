@@ -36,9 +36,7 @@ function getRestaurantsByLatLon(lat, lon){
     .then(data => printRestaurantData(data));
 }
 
-function getRestuarantsByCity(city){
 
-}
 
 
 function printRestaurantResults(data){
@@ -53,9 +51,7 @@ function printRestaurantResults(data){
     
 }
 
-function printRestaurantDetails(data){
 
-}
 
 function getRandomFoodImages(){
 
