@@ -13,9 +13,9 @@
     }
 
 
-    /* .title {
-        align-items:center;
-    } */
+    .title:hover{
+        animation: fadeIn 5s; 
+        }
     .title-text {
         font-size: 90px;
         /* need to replace the margin left wither with a center,flex or bootstrap */
@@ -31,8 +31,7 @@
         /* height: 200px; */
         /* width: 200px; */
     }
-    .map{
-        
+    .map{  
     font-size: 70px;
     color: var(--mred);
     margin-left: 500px;
@@ -60,7 +59,7 @@
     border-width: 5px;
     color: var(--mred);
     height: 100px;
-    width: 650px;
+    width: 350px;
     z-index: 3;
     margin-top: 20px;
 }
@@ -103,7 +102,9 @@ button {
         height: 100px;
         width: 350px;
     }
-
+.row {
+    margin: 400px;
+}
 
     /* #0 {
     border-radius: 20%;
@@ -143,10 +144,3 @@ button {
    }
  */
 
-
-
-
-
-title:hover{
-animation: fadeIn 5s; 
-}
