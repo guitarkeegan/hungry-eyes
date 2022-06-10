@@ -1,37 +1,103 @@
 :root {
     --myellow:#f4bf44;
     --mred: #cc2b1f;
+    --mwhite: #f5f1e7;
     }
     *{
         background-color: var(--myellow);
         color: var(--mred);
         font-family: "monoton";
+        position: relative;
     }
     body {
         background-color: var(--myellow);
     }
 
 
-    .title {
-        align-items:center;
-    }
+    .title-text:hover {
+        color: var(--mwhite); 
+        }
     .title-text {
         font-size: 90px;
-        margin-left: 150px;
+        /* need to replace the margin left wither with a center,flex or bootstrap */
+        margin-left: 450px;
     }
     
     .background-image {
-        background-color: var(--myellow);
+        border-color: var(--mwhite);
+        border:10px solid;
+        border-width: 40px;
         display: flex;
         opacity: .80;
+        border-radius: 1%;
+        /* padding: 5px; */
         /* margin: auto; */
         /* height: 200px; */
         /* width: 200px; */
     }
+    .map{  
+    font-size: 70px;
+    color: var(--mred);
+    margin-left: 500px;
+    margin-bottom: 16px;
+    border: solid;
+    border-color: var(--mred);
+    border-radius:  20px;
+    border-width: 5px;
+    height: 100px;
+    width: 350px;
+    z-index: 3;
+    margin-top: 20px;
 
-
-
-    button {
+    }
+    .near-you {
+    border: solid;
+    font-size: 59px;
+    /* font-stretch: 0 0 8% 0; */
+    color: var(--mred);
+    padding-top: -17px;
+    padding: .1px;
+    margin-left: 600px;
+    border-color: var(--mred);
+    border-radius:  20px;
+    border-width: 5px;
+    color: var(--mred);
+    height: 100px;
+    width: 350px;
+    z-index: 3;
+    margin-top: 20px;
+}
+.what-to-eat:hover {
+    color: var(--mwhite); 
+    }
+.what-to-eat {
+    font-size: 46px;
+    z-index: 2;
+    height: 100px;
+    width: 650px;
+    margin-left: 500px;
+}   
+.choices:hover {
+    color: var(--mwhite); 
+    }
+.choices {
+    font-size: 46px;
+    border-color: var(--mred);
+    border-radius:  20px;
+    height: 100px;
+    width: 650px;
+}
+.still {
+    font-size: 56px;
+    height:300px;
+    width: 600px;
+    margin-right: 180px;
+}
+.map{
+    height:300px;
+    width: 600px;
+}
+button {
         font-family: "monoton";
         position:relative;
         font-size: 40px;
@@ -40,10 +106,12 @@
         margin-left: 500px;
         border-color: var(--mred);
         border-radius:  20px;
+        border-width: 5px;
         color: var(--mred);
         height: 100px;
         width: 350px;
     }
+
 
     #results {
         border: solid;
@@ -52,3 +120,48 @@
         float: right;
         
     }
+
+.row {
+    margin: 400px;
+}
+
+
+    /* #0 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+    }
+    #1 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+    }
+    #2 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+    }
+   #3 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+   }
+   #4 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+    }
+   #5 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 10px;
+   } */
+
+
+
