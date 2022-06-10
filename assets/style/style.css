@@ -51,7 +51,10 @@
 
     }
     .near-you {
+
     /* border: solid; */
+
+
     font-size: 59px;
     /* font-stretch: 0 0 8% 0; */
     color: var(--mred);
@@ -111,7 +114,12 @@ button {
         height: 100px;
         width: 350px;
     }
-
+    .random-img-div {
+        object-fit: contain;
+    }
+    .random-img-div:hover {
+        opacity: 50%;
+    }
 
     #results {
         border: solid;
@@ -141,7 +149,7 @@ button {
     width: 200px;
 }
 
-    /* #0 {
+    #0 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
@@ -176,7 +184,7 @@ button {
     border: solid;
     border-color: var(--myellow);
     border: size 10px;
-   } */
+   }
 
 
 
