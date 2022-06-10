@@ -19,22 +19,28 @@ $(".random-img-div").on("click", function(event){
     const urlArray = event.target.name.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
     console.log(searchedTerm);
+    // uncomment bellow to start the yelp search process
+    // getUserLocation()
 });
 $(".still").on("click", function(){
     getRandomFoodImages();
 });
 
-// navigator.geolocation.getCurrentPosition(function(pos) {
-//     console.log(pos)
-// })
-
 function getUserLocation(){
+    // TODO: Make this appear as a modal
+    navigator.geolocation.getCurrentPosition(function(pos) {
+        console.log(pos)
+    })
     if (userLat && userLon){
         getRestaurantsByLatLon(userLat, userLon);
     } else {
         const city = showModal();
         getRestuarantsByCity(city);
     }
+}
+
+function showModal(){
+    return "modal";
 }
 
 // TODO: double check that we are getting the desired category
@@ -66,7 +72,7 @@ function printRestaurantResults(data){
         const phoneNumber = data.businesses[i].phone;
     }
 }
-
+// TODO: decide what information we need from the get restaurant details function
 function printRestaurantDetails(data){
 
 }
@@ -86,7 +92,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
-// TODO: decide what information we need from this function
+
 function getRestaurantDetails(id){
     fetch(`https://api.yelp.com/v3/businesses/${id}`)
     .then(function(response){
