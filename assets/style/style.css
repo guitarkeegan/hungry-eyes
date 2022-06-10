@@ -137,6 +137,10 @@ button {
     display: inline-block;
 }
 
+.random-img {
+    width: 200px;
+}
+
     /* #0 {
     border-radius: 20%;
     border: solid;
