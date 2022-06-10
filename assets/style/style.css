@@ -51,7 +51,7 @@
 
     }
     .near-you {
-    border: solid;
+    /* border: solid; */
     font-size: 59px;
     /* font-stretch: 0 0 8% 0; */
     color: var(--mred);
@@ -125,6 +125,17 @@ button {
     margin: 400px;
 }
 
+#top-five-results {
+    border: solid;
+    height: 600px;
+    width: 600px;
+    float: right;
+    margin-right: 200px;
+}
+
+.still {
+    display: inline-block;
+}
 
     /* #0 {
     border-radius: 20%;
