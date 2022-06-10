@@ -20,6 +20,9 @@ $(".random-img-div").on("click", function(event){
     searchedTerm = urlArray[urlArray.length - 2];
     console.log(searchedTerm);
 });
+$(".still").on("click", function(){
+    getRandomFoodImages();
+});
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
 //     console.log(pos)
@@ -62,7 +65,6 @@ function printRestaurantResults(data){
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
     }
-    
 }
 
 function printRestaurantDetails(data){
@@ -84,7 +86,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
-
+// TODO: decide what information we need from this function
 function getRestaurantDetails(id){
     fetch(`https://api.yelp.com/v3/businesses/${id}`)
     .then(function(response){
