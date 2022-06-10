@@ -107,16 +107,19 @@ function getRestaurantDetails(id){
         return response.json();
     })
     .then(function(data) {
+        console.log(data)
         printRestaurantDetails(data)
+
     })
 };
 
 function printRestaurantDetails(data){
+    console.log(data)
     var restaurantName = data.name;
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
     var restaurantPhoto = data.photos[0]
-    var dailyHours = [];
+    var dailyHours = data.hours[0].open[0];
     for(let i=0; i<data.open.length;i++) {
 
     }
