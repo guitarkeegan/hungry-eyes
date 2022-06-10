@@ -9,7 +9,10 @@ let searchedCategory = "";
 let limit = 5;
 let id = "";
 let randomImageArray = [];
-
+// event handlers
+$(".what-to-eat").on("click", function(){
+    getRandomFoodImages();
+})
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
 //     console.log(pos)
@@ -58,15 +61,18 @@ function printRestaurantDetails(data){
 }
 
 function getRandomFoodImages(){
-
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
         .then(data=>{
             randomImageArray.push(data.image);
+            printRandomFoodImages(i);
         })
     }
-    printRandomFoodImages();
+}
+
+function printRandomFoodImages(imageArrayIndex){
+    $(`#${imageArrayIndex}`).append(`<img src=${randomImageArray[imageArrayIndex]} />`);
 }
 
 
