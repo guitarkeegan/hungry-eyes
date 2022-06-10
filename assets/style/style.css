@@ -111,6 +111,16 @@ button {
         height: 100px;
         width: 350px;
     }
+
+
+    #results {
+        border: solid;
+        height: 500px;
+        width: 500px;
+        float: right;
+        
+    }
+
 .row {
     margin: 400px;
 }
@@ -152,5 +162,6 @@ button {
     border-color: var(--myellow);
     border: size 10px;
    } */
+
 
 
