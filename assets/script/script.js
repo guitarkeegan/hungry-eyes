@@ -9,10 +9,16 @@ let searchedCategory = "";
 let limit = 5;
 let id = "";
 let randomImageArray = [];
-// event handlers
+// event listeners
 $(".what-to-eat").on("click", function(){
     getRandomFoodImages();
 })
+// random food images
+$(".random-img-div").on("click", function(event){
+    const urlArray = event.target.name.split("/");
+    searchedCategory = urlArray[urlArray.length - 2];
+    console.log(searchedCategory);
+});
 
 // navigator.geolocation.getCurrentPosition(function(pos) {
 //     console.log(pos)
@@ -27,7 +33,7 @@ function getUserLocation(){
     }
 }
 
-
+// TODO: double check that we are getting the desired category
 function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&categories=${searchedCategory}&limit=${limit}`
     fetch(yelpEndpoint, {
@@ -72,7 +78,7 @@ function getRandomFoodImages(){
 }
 
 function printRandomFoodImages(imageArrayIndex){
-    $(`#${imageArrayIndex}`).append(`<img src=${randomImageArray[imageArrayIndex]} />`);
+    $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
 
