@@ -32,14 +32,15 @@
         /* width: 200px; */
     }
     .map{
-        border: solid;
-    font-size: 50px;
+        
+    font-size: 70px;
     color: var(--mred);
     margin-left: 500px;
+    margin-bottom: 16px;
+    border: solid;
     border-color: var(--mred);
     border-radius:  20px;
     border-width: 5px;
-    color: var(--mred);
     height: 100px;
     width: 350px;
     z-index: 3;
@@ -48,18 +49,22 @@
     }
     .near-you {
     border: solid;
-    font-size: 50px;
+    font-size: 59px;
+    /* font-stretch: 0 0 8% 0; */
     color: var(--mred);
+    padding-top: -17px;
+    padding: .1px;
     margin-left: 600px;
     border-color: var(--mred);
     border-radius:  20px;
     border-width: 5px;
     color: var(--mred);
     height: 100px;
-    width: 350px;
+    width: 650px;
     z-index: 3;
     margin-top: 20px;
 }
+
 .what-to-eat {
     font-size: 46px;
     z-index: 2;
@@ -75,6 +80,7 @@
     width: 650px;
 }
 .still {
+    font-size: 56px;
     height:300px;
     width: 600px;
     margin-right: 180px;
@@ -97,6 +103,48 @@ button {
         height: 100px;
         width: 350px;
     }
+
+
+    /* #0 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+    }
+    #1 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+    }
+    #2 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+    }
+   #3 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+   }
+   #4 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+    }
+   #5 {
+    border-radius: 20%;
+    border: solid;
+    border-color: var(--myellow);
+    border: size 5px;
+   }
+ */
+
+
+
 
 
 title:hover{
