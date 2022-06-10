@@ -14,8 +14,8 @@
     }
 
 
-    .title:hover{
-        animation: fadeIn 5s; 
+    .title-text:hover {
+        color: var(--mwhite); 
         }
     .title-text {
         font-size: 90px;
@@ -30,6 +30,7 @@
         display: flex;
         opacity: .80;
         border-radius: 1%;
+        /* padding: 5px; */
         /* margin: auto; */
         /* height: 200px; */
         /* width: 200px; */
@@ -66,7 +67,9 @@
     z-index: 3;
     margin-top: 20px;
 }
-
+.what-to-eat:hover {
+    color: var(--mwhite); 
+    }
 .what-to-eat {
     font-size: 46px;
     z-index: 2;
@@ -74,6 +77,9 @@
     width: 650px;
     margin-left: 500px;
 }   
+.choices:hover {
+    color: var(--mwhite); 
+    }
 .choices {
     font-size: 46px;
     border-color: var(--mred);
@@ -110,7 +116,7 @@ button {
 }
 
 
-    /* #0 {
+    #0 {
     border-radius: 20%;
     border: solid;
     border-color: var(--myellow);
@@ -146,5 +152,5 @@ button {
     border-color: var(--myellow);
     border: size 10px;
    }
- */
+
 
