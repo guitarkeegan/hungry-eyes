@@ -16,9 +16,8 @@ $(".what-to-eat").on("click", function(){
 })
 // random food images
 $(".random-img-div").on("click", function(event){
-    const urlArray = event.target.name.split("/");
+    const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
-    console.log(searchedTerm);
     // uncomment bellow to start the yelp search process
     // getUserLocation()
 });
@@ -88,7 +87,7 @@ function getRandomFoodImages(){
         })
     }
 }
-
+// TODO: not printing to screen on second try
 function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
