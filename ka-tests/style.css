@@ -51,10 +51,10 @@ button {
 
 } */
 
-#still-hungry-link{
+.still-hungry-link{
     text-decoration: none;
     color:#cc2b1f;
-    /* font-size: 40px; */
+    font-size: 2rem;
 }
 
 @media screen and (max-width: 1024px) {}
