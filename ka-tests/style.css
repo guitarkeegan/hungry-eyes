@@ -38,6 +38,9 @@ button {
     color: var(--mwhite);
 }
 
+
+
+
 /* TODO: style this */
 .top-five-results-container{
 
@@ -46,6 +49,12 @@ button {
 h1 {
     font-size: calc(4.375rem + 1.5vw);
     /* change the rem value if you want to change the size */
+}
+
+#still-hungry-link{
+    text-decoration: none;
+    color:#cc2b1f;
+    /* font-size: 40px; */
 }
 
 @media screen and (max-width: 1024px) {}

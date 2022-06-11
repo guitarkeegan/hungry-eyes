@@ -68,6 +68,8 @@ function getRestuarantsByCity(city){
 
 function printRestaurantResults(data){
     console.log(data);
+    const resultsTitleEl = $("<h2>").text("Near You");
+    $("#restaurant-list").append(resultsTitleEl);
     for (let i=0;i<data.businesses.length;i++){
         const id = data.businesses[i].id;
         const name = data.businesses[i].name;
@@ -76,12 +78,11 @@ function printRestaurantResults(data){
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img src=${imageUrl}>`)
-        const resultsTitleEl = $("h2").text("Near You");
         // TODO: append and a tag to the p to bring us to the details section
         const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
-        $("#restaurant-list").append(resultsTitleEl);
         $("#restaurant-list").append(resultItemEl);
     }
+    $("#restaurant-list").append("<a href='#still-hungry-link'>Still hungry? Click to see more pictures!</a>")
 }
 
 function getRandomFoodImages(){
