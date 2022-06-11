@@ -1,83 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hungry Eyes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./assets/style/style.css"> </link>
-
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/style/style.css">
+    </link>
 </head>
+
 <body>
-    <header class="title">
-        <h1 class="title-text">Hungry Eyes</h1>
+    <header class="container pt-2 pb-3 text-center">
+        <h1>Hungry Eyes</h1>
     </header>
-    <div class="background-image" 
-        style="border: none; height: 800px; background-image: url(./assets/images/food-background.jpg); background-size: cover; background-position: center center;">
-    </div>
-    <button class="what-to-eat">
-        What to Eat?
-    </button>
-    <br>
-    <br>
-    <br>
 
-    <button class="choices" id="still-hungry">
+    <!-- big image beneath the header -->
 
-        More Choices?
-    </button>
-   
-    <div class="container">
+    <main class="backgound-image-container position-relative"><img id="background-image" class="img-fluid"
+            src="../assets/images/food-background.jpg" alt="Looking down on a bunch of delecious looking food"
+            srcset="">
+            <div class="what-to-eat-div what-to-eat-sm position-absolute top-50 start-50 translate-middle"><button class="what-to-eat">What to Eat?</button></div>
+    </main>
+
+    <!-- random food images landing zone -->
+<div id="choices-button-div" class="container text-center"><button class="choices-button mt-md-4 mb-md-4" id="still-hungry">More Choices?</button></div>
+    
+
+    <div class="container mb-4" id="random-img-container">
         <div class="row">
 
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="0"></div>
             </div>
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="1"></div>
             </div>
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="2"></div>
             </div>
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="3"></div>
             </div>
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="4"></div>
             </div>
-            <div class="col-12 col-md-4 random-img-div">
+            <div class="col-12 col-md-4 mb-3 random-img-div">
                 <div id="5"></div>
             </div>
         </div>
     </div>
 
+    <!-- top five results -->
 
-    <h2 class="near-you">Near You</h2>
-    <div id="top-five-results"> ibuttons etc.? -->
+    <section id="top-five-results-section" class="container row">
+        <div id="restaurant-list" class="col-sm-6"></div>
+        <div id="results-map-div" class="col-sm-6"></div>
+    </section>
 
-        place holder for map/list
-    </div>
-    <br>
-    <br>
-    <div class="still"><a href="#still-hungry"style="text-decoration:none;color:#cc2b1f;font-size: 40px;">Still hungry? Click to see more pictures!</a></div>
+    <!-- business details section -->
 
-
-   
-
-
+    <section id="business-details-section" class="container row">
+        <div id="details-div" class="col-sm-6"></div>
+        <div id="details-map-div" class="col-sm-6"></div>
+    </section>
 
 
-    
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="./assets/script/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+        integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+        <script src="./assets/script/script.js"></script>
 </body>
+
 </html>
