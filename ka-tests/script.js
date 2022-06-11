@@ -69,13 +69,17 @@ function getRestuarantsByCity(city){
 function printRestaurantResults(data){
     console.log(data);
     for (let i=0;i<data.businesses.length;i++){
-        id = data.businesses[i].id;
+        const id = data.businesses[i].id;
         const name = data.businesses[i].name;
         const rating = data.businesses[i].rating;
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-        console.log(id, name, rating, imageUrl, phoneNumber);
+        const resultImage = $(`<img src=${imageUrl}>`)
+        const resultsTitleEl = $("h2").text("Near You");
+        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber} ${resultImage}`)
+        $("#restaurant-list").append(resultsTitleEl);
+        $("#restaurant-list").append(resultItemEl);
     }
 }
 
@@ -95,7 +99,6 @@ function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
-    $(`#${imageArrayIndex}`).attr('name', randomImageArray[imageArrayIndex]);
     $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
