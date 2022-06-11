@@ -18,8 +18,7 @@ $(".what-to-eat").on("click", function(){
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
-    // uncomment bellow to start the yelp search process
-    // getUserLocation()
+    getUserLocation()
 });
 $(".choices-button").on("click", function(){
     getRandomFoodImages();
@@ -29,22 +28,24 @@ function getUserLocation(){
     // TODO: Make this appear as a modal
     navigator.geolocation.getCurrentPosition(function(pos) {
         console.log(pos)
+        userLat = pos.latitude;
+        userLon = pos.longitude;
+        if (userLat && userLon){
+            getRestaurantsByLatLon(userLat, userLon);
+        } else {
+            const city = showModal();
+            getRestuarantsByCity(city);
+        }
     })
-    if (userLat && userLon){
-        getRestaurantsByLatLon(userLat, userLon);
-    } else {
-        const city = showModal();
-        getRestuarantsByCity(city);
-    }
 }
 
 function showModal(){
-    return "modal";
+    return
 }
 
 
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
+    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -66,14 +67,15 @@ function getRestuarantsByCity(city){
 
 // TODO: decide where to display results
 function printRestaurantResults(data){
-    for (let i=0;i<data.businesses.length();i++){
+    console.log(data);
+    for (let i=0;i<data.businesses.length;i++){
         id = data.businesses[i].id;
         const name = data.businesses[i].name;
         const rating = data.businesses[i].rating;
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-    
+        console.log(id, name, rating, imageUrl, phoneNumber);
     }
 }
 
