@@ -22,7 +22,7 @@ $(".random-img-div").on("click", function(event){
     // uncomment bellow to start the yelp search process
     // getUserLocation()
 });
-$(".choices").on("click", function(){
+$(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
 
@@ -78,8 +78,6 @@ function printRestaurantResults(data){
     }
 }
 
-
-
 function getRandomFoodImages(){
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
@@ -87,7 +85,6 @@ function getRandomFoodImages(){
         .then(data=>{
             randomImageArray.push(data.image);
             printRandomFoodImages(i);
-            console.log(randomImageArray);
         })
     }
 }
