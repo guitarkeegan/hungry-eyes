@@ -82,7 +82,7 @@ function printRestaurantResults(data){
         const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         $("#restaurant-list").append(resultItemEl);
     }
-    $("#restaurant-list").append("<a href='#still-hungry-link'>Still hungry? Click to see more pictures!</a>")
+    $("#restaurant-list").append("<a href='#choices-button-div'>Still hungry? Click to see more pictures!</a>")
 }
 
 function getRandomFoodImages(){

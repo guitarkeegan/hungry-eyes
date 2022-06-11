@@ -14,6 +14,11 @@ body {
     font-family: "monoton";
 }
 
+h1 {
+    font-size: calc(4.375rem + 1.5vw);
+    /* change the rem value if we want to change the size */
+}
+
 button {
     font-family: "monoton";
     font-size: 5vw;
@@ -42,14 +47,9 @@ button {
 
 
 /* TODO: style this */
-.top-five-results-container{
+/* .top-five-results-container{
 
-}
-
-h1 {
-    font-size: calc(4.375rem + 1.5vw);
-    /* change the rem value if you want to change the size */
-}
+} */
 
 #still-hungry-link{
     text-decoration: none;
