@@ -16,13 +16,11 @@ $(".what-to-eat").on("click", function(){
 })
 // random food images
 $(".random-img-div").on("click", function(event){
-    const urlArray = event.target.name.split("/");
+    const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
-    console.log(searchedTerm);
-    // uncomment bellow to start the yelp search process
-    // getUserLocation()
+    getUserLocation()
 });
-$(".choices").on("click", function(){
+$(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
 
@@ -30,22 +28,24 @@ function getUserLocation(){
     // TODO: Make this appear as a modal
     navigator.geolocation.getCurrentPosition(function(pos) {
         console.log(pos)
+        userLat = pos.latitude;
+        userLon = pos.longitude;
+        if (userLat && userLon){
+            getRestaurantsByLatLon(userLat, userLon);
+        } else {
+            const city = showModal();
+            getRestuarantsByCity(city);
+        }
     })
-    if (userLat && userLon){
-        getRestaurantsByLatLon(userLat, userLon);
-    } else {
-        const city = showModal();
-        getRestuarantsByCity(city);
-    }
 }
 
 function showModal(){
-    return "modal";
+    return
 }
 
 
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?lat=${lat}&lon=${lon}&term=${searchedTerm}&limit=${resultsLimit}`
+    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -65,22 +65,28 @@ function getRestuarantsByCity(city){
     .then(data=>printRestaurantResults(data));
 }
 
-// TODO: decide where to display results
+
 function printRestaurantResults(data){
-    for (let i=0;i<data.businesses.length();i++){
-        id = data.businesses[i].id;
+    console.log(data);
+    const resultsTitleEl = $("<h2>").text("Near You");
+    $("#restaurant-list").append(resultsTitleEl);
+    for (let i=0;i<data.businesses.length;i++){
+        const id = data.businesses[i].id;
         const name = data.businesses[i].name;
         const rating = data.businesses[i].rating;
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-    
+        const resultImage = $(`<img src=${imageUrl}>`)
+        // TODO: append and a tag to the p to bring us to the details section
+        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        $("#restaurant-list").append(resultItemEl);
     }
+    $("#restaurant-list").append("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>")
 }
 
-
-
 function getRandomFoodImages(){
+    randomImageArray = [];
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
@@ -92,11 +98,12 @@ function getRandomFoodImages(){
 }
 
 function printRandomFoodImages(imageArrayIndex){
-    console.log('click')
+    $(".choices-button").css({'display': 'block'});
+    $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
     $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
     
-//     $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
+    // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
 
