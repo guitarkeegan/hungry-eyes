@@ -23,8 +23,11 @@ button {
     border-radius: 20px;
     border-width: 5px;
     color: var(--mred);
-    /* height: 100px;
-    width: 442px; */
+}
+
+.choices-button{
+    display: none;
+    margin: 0 auto;
 }
 
 .what-to-eat-div {
@@ -42,7 +45,14 @@ h1 {
 
 @media screen and (max-width: 1024px) {}
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+main{
+    margin-bottom: 20px;
+}
+.choices-button{
+    margin: 0 auto 20px;
+}
+}
 
 @media screen and (max-width: 442px) {
 
@@ -53,6 +63,7 @@ h1 {
 
     button {
         font-size: 8vw;
+        margin-bottom: 40px;
     }
 
     .what-to-eat-div {
