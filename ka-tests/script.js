@@ -80,6 +80,7 @@ function printRestaurantResults(data){
 }
 
 function getRandomFoodImages(){
+    randomImageArray = [];
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
@@ -89,7 +90,7 @@ function getRandomFoodImages(){
         })
     }
 }
-// TODO: not printing to screen on second try
+
 function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
