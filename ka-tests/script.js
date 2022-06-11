@@ -65,7 +65,7 @@ function getRestuarantsByCity(city){
     .then(data=>printRestaurantResults(data));
 }
 
-// TODO: decide where to display results
+
 function printRestaurantResults(data){
     console.log(data);
     for (let i=0;i<data.businesses.length;i++){
@@ -77,7 +77,8 @@ function printRestaurantResults(data){
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img src=${imageUrl}>`)
         const resultsTitleEl = $("h2").text("Near You");
-        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber} ${resultImage}`)
+        // TODO: append and a tag to the p to bring us to the details section
+        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         $("#restaurant-list").append(resultsTitleEl);
         $("#restaurant-list").append(resultItemEl);
     }
