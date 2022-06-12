@@ -10,7 +10,7 @@ let searchedCity = "";
 let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
-let lastImageArray= [...randomImageArray];
+let globalImagesArray= [];
 
 // event listeners
 $(".what-to-eat").on("click", function(){
@@ -25,7 +25,11 @@ $(".random-img-div").on("click", function(event){
 $(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
-
+$("#back-button").on("click", function(){
+    localStorage.getItem(globalImagesArray, JSON.parse(globalImagesArray));
+    //parse the info back
+    //call a print function to display it back to the og part
+});
 function getUserLocation(){
     // TODO: Make this appear as a modal
     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -94,9 +98,12 @@ function getRandomFoodImages(){
         .then(response=>response.json())
         .then(data=>{
             randomImageArray.push(data.image);
+            globalImagesArray.push(data.image);
             printRandomFoodImages(i);
         })
     }
+    console.log(globalImagesArray);
+    localStorage.setItem(globalImagesArray, JSON.stringify(globalImagesArray));
 }
 
 function printRandomFoodImages(imageArrayIndex){
@@ -104,8 +111,7 @@ function printRandomFoodImages(imageArrayIndex){
     $("#back-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
-    storeSearchedArray();
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
@@ -136,11 +142,25 @@ function printRestaurantDetails(data){
    //0 is Monday
 }
 
-function storeSearchedArray (randomImageArray) {
-    console.log(randomImageArray);
+// function SavelastClick () {
+//     localStorage.setItem(randomImageArray);
+// }
 
+
+// function storeSearchedArray () {
+   
+//     console.log(this.files);
     
-}
+    
+//     // imageArrayIndex.addEventListener("click", function () {
+//     //     console.log(this.files);
+//     // });
+    
+//     // console.log(imageArrayIndex);
+//     // localStorage.setItem.json.stringify(imageArrayIndex);
+// // need to stringify 
+    
+// }
 
 
 // function lastSearchedArray
