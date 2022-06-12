@@ -18,7 +18,9 @@ h1 {
     /* change the rem value if we want to change the size */
 }
 
-button {
+button, a.button {
+    text-decoration: none;
+    border-style: solid;
     font-family: "monoton";
     font-size: 5vw;
     background-color: var(--myellow);
@@ -45,18 +47,18 @@ button {
     font-size: smaller;
 }
 
-
-
-
-/* TODO: style this */
-/* .top-five-results-container{
-
-} */
-
 .still-hungry-link{
     text-decoration: none;
     color:#cc2b1f;
     font-size: 2rem;
+}
+
+.finished-loading{
+    display: none;
+}
+
+#search-button{
+    background-color: var(--mred);
 }
 
 @media screen and (max-width: 1024px) {}

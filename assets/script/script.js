@@ -1,7 +1,3 @@
-// TODO: test yelp fetch api
-// yelp search endpoint https://api.yelp.com/v3/businesses/search
-// yelp business details endpoint https://api.yelp.com/v3/businesses/{id}
-// foodish endpoint https://foodish-api.herokuapp.com/
 let userLat = "";
 let userLon = "";
 let searchedFoodImage = "";
@@ -10,6 +6,7 @@ let userInputLocation = "";
 let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
+const borderSpinner = $(".spinner-border");
 // event listeners
 $(".what-to-eat").on("click", function(){
     getRandomFoodImages();
@@ -35,12 +32,16 @@ $("#user-input-form").on("submit", (e)=>{
     $(".btn-close").trigger("click");
     getRestuarantsByCity(userInputLocation);
 })
+$("#search-button").on("click", ()=>{
+    userInputLocation = userInputLocationEl.val();
+    $("#user-input-form").trigger("reset");
+    $(".btn-close").trigger("click");
+    getRestuarantsByCity(userInputLocation);
+})
 
 function getUserLocation(){
     $("#exampleModal").modal('show');
-
 }
-
 
 function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
@@ -122,7 +123,8 @@ function getRestaurantDetails(id){
 };
 
 function printRestaurantDetails(data){
-    console.log(data)
+    // left side
+    console.log(data);
     var restaurantName = data.name;
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
@@ -133,25 +135,19 @@ function printRestaurantDetails(data){
     const phoneEl = $("<p>").text(restaurantPhone);
     const imageEl = $("<img>").attr("src", restaurantPhoto).css({"max-width": "400px", "border": "solid 2px black"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
-}
+    // right side
+    detailsMapDibEl = $(".details-map-div")
 
-function getSearchedRestaurants(){
-    // get stuff from local storage
-    // printSearchedR()
-}
-
-function printSearchedR(){
 
 }
 
-$(function() {
-    navigator.geolocation.getCurrentPosition(function(pos) {
-        userLat = pos.latitude;
-        userLon = pos.longitude;
-        if (userLat && userLon){
-            getRestaurantsByLatLon(userLat, userLon);
-        }});
-}, (err)=>alert(err));
+
+navigator.geolocation.getCurrentPosition(function(pos) {
+    userLat = pos.coords.latitude;
+    userLon = pos.coords.longitude;
+    });
+
+
 
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function
