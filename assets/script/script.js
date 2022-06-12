@@ -26,10 +26,22 @@ $(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
 $("#back-button").on("click", function(){
-    localStorage.getItem(globalImagesArray, JSON.parse(globalImagesArray));
-    //parse the info back
-    //call a print function to display it back to the og part
+    localStorageShit();
+    printRandomFoodImages(oldImages);
 });
+function localStorageShit(){
+    
+
+
+    console.log(globalImagesArray);
+    //var oldImages =JSON.parse(localStorage.getItem(globalImageArray);
+    var oldImages=localStorage.getItem(JSON.parse([0], globalImagesArray));
+    console.log(oldImages);
+    //parse the info back
+    //call a printrandomfooimages functionfunction to display it back to the og part
+}
+
+
 function getUserLocation(){
     // TODO: Make this appear as a modal
     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -99,11 +111,12 @@ function getRandomFoodImages(){
         .then(data=>{
             randomImageArray.push(data.image);
             globalImagesArray.push(data.image);
+            localStorage.setItem(i, JSON.stringify(data.image));
             printRandomFoodImages(i);
         })
     }
-    console.log(globalImagesArray);
-    localStorage.setItem(globalImagesArray, JSON.stringify(globalImagesArray));
+    //console.log(globalImagesArray);
+    //localStorage.setItem(globalImagesArray, JSON.stringify(globalImagesArray));
 }
 
 function printRandomFoodImages(imageArrayIndex){
@@ -142,25 +155,15 @@ function printRestaurantDetails(data){
    //0 is Monday
 }
 
-// function SavelastClick () {
-//     localStorage.setItem(randomImageArray);
-// }
-
-
-// function storeSearchedArray () {
-   
-//     console.log(this.files);
-    
-    
-//     // imageArrayIndex.addEventListener("click", function () {
-//     //     console.log(this.files);
-//     // });
-    
-//     // console.log(imageArrayIndex);
-//     // localStorage.setItem.json.stringify(imageArrayIndex);
-// // need to stringify 
-    
-// }
+function printOldFoodImages(oldImages){
+    randomImageArray = [];
+    $(".choices-button").css({'display': 'block'});
+    $("#back-button").css({'display': 'block'});
+    $("#choices-button-div").css({'text-align':'center'});
+    $(`#${oldImages}`).attr('style','')
+    $(`#${oldImages}`).css({'background-image':`url(${oldImages})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
+    // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
+}
 
 
 // function lastSearchedArray
