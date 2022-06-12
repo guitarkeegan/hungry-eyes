@@ -6,7 +6,7 @@ let userLat = "";
 let userLon = "";
 let searchedFoodImage = "";
 let searchedTerm = "";
-let searchedCity = "";
+let userInputLocation = "";
 let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
@@ -18,31 +18,27 @@ $(".what-to-eat").on("click", function(){
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
-    // store here ex. "pizza"
-    getUserLocation()
+    if (userLat  && userLon){
+        getRestaurantsByLatLon(userLat, userLon)
+    } else {
+        getUserLocation()
+    }
 });
 $(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
+let userInputLocationEl = $("#user-input-location");
+$("#user-input-form").on("submit", (e)=>{
+    e.preventDefault();
+    userInputLocation = userInputLocationEl.val();
+    $("#user-input-form").trigger("reset");
+    $(".btn-close").trigger("click");
+    getRestuarantsByCity(userInputLocation);
+})
 
 function getUserLocation(){
-    // TODO: Make this appear as a modal - keegan
-    navigator.geolocation.getCurrentPosition(function(pos) {
+    $("#exampleModal").modal('show');
 
-        userLat = pos.latitude;
-        userLon = pos.longitude;
-        if (userLat && userLon){
-            getRestaurantsByLatLon(userLat, userLon);
-        } else {
-            const city = showModal();
-            // marie
-            getRestuarantsByCity(city);
-        }
-    })
-}
-// marie
-function showModal(){
-    return "los angeles"
 }
 
 
@@ -57,8 +53,8 @@ function getRestaurantsByLatLon(lat, lon){
     .then(data => printRestaurantResults(data));
 }
 
-function getRestuarantsByCity(city){
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city}&term=${searchedTerm}&limit=${resultsLimit}`,{
+function getRestuarantsByCity(location){
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${location}&term=${searchedTerm}&limit=${resultsLimit}`,{
         headers: {
             Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
         }
@@ -102,8 +98,8 @@ function getRandomFoodImages(){
 function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
-    $(`#${imageArrayIndex}`).attr('style','')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
+    $(`#${imageArrayIndex}`).attr('style', '')
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
@@ -148,7 +144,14 @@ function printSearchedR(){
 
 }
 
-
+$(function() {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+        userLat = pos.latitude;
+        userLon = pos.longitude;
+        if (userLat && userLon){
+            getRestaurantsByLatLon(userLat, userLon);
+        }});
+}, (err)=>alert(err));
 
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function

@@ -9,7 +9,6 @@ body {
 }
 
 * {
-    background-color: var(--myellow);
     color: var(--mred);
     font-family: "monoton";
 }
@@ -41,6 +40,9 @@ button {
 
 .what-to-eat:hover {
     color: var(--mwhite);
+}
+.modal-header .btn-close{
+    font-size: smaller;
 }
 
 
