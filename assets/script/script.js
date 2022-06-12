@@ -18,6 +18,7 @@ $(".what-to-eat").on("click", function(){
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
+    // store here ex. "pizza"
     getUserLocation()
 });
 $(".choices-button").on("click", function(){
@@ -25,7 +26,7 @@ $(".choices-button").on("click", function(){
 });
 
 function getUserLocation(){
-    // TODO: Make this appear as a modal
+    // TODO: Make this appear as a modal - keegan
     navigator.geolocation.getCurrentPosition(function(pos) {
         console.log(pos)
         userLat = pos.latitude;
@@ -34,13 +35,14 @@ function getUserLocation(){
             getRestaurantsByLatLon(userLat, userLon);
         } else {
             const city = showModal();
+            // marie
             getRestuarantsByCity(city);
         }
     })
 }
-
+// marie
 function showModal(){
-    return
+    return "los angeles"
 }
 
 
@@ -78,7 +80,7 @@ function printRestaurantResults(data){
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img src=${imageUrl}>`)
-        // TODO: append and a tag to the p to bring us to the details section
+        // TODO: append and 'a' tag to the 'p' to bring us to the details section change line 83
         const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         $("#restaurant-list").append(resultItemEl);
     }
@@ -130,11 +132,19 @@ function printRestaurantDetails(data){
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
     var restaurantPhoto = data.photos[0]
-   
-
-    
     //0 is Monday
 }
+
+function getSearchedRestaurants(){
+    // get stuff from local storage
+    // printSearchedR()
+}
+
+function printSearchedR(){
+
+}
+
+
 
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function
