@@ -102,7 +102,7 @@ function printRandomFoodImages(imageArrayIndex){
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
     $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
-    
+    storeSearchedArray();
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
@@ -130,11 +130,17 @@ function printRestaurantDetails(data){
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
     var restaurantPhoto = data.photos[0]
-   
-
-    
-    //0 is Monday
+   //0 is Monday
 }
+
+function storeSearchedArray (randomImageArray) {
+    console.log(randomImageArray);
+    
+}
+
+
+// function lastSearchedArray
+
 
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function

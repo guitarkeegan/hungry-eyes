@@ -34,16 +34,35 @@ button {
     display: none;
     margin: 0 auto;
 }
+#buttons-for-choices {
+    display: none;
+    margin: 0 auto;
+}
+
+
 
 .what-to-eat-div {
     border-radius: 20px;
 }
 
+/* button hovers */
 .what-to-eat:hover {
     color: var(--mwhite);
 }
+.choices-button:hover {
+    color: var(--mwhite);
+}
+.back-button:hover {
+    color: var(--mwhite);
+}
 
-
+#back-button {
+    font-size: 5vw;
+    display: none;
+}
+#forward-button {
+    font-size: 5vw;
+}
 
 
 /* TODO: style this */

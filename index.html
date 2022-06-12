@@ -24,14 +24,17 @@
     <!-- big image beneath the header -->
 
     <main class="backgound-image-container position-relative"><img id="background-image" class="img-fluid"
-            src="../assets/images/food-background.jpg" alt="Looking down on a bunch of delecious looking food"
+            src="./assets/images/food-background.jpg" alt="Looking down on a bunch of delecious looking food"
             srcset="">
             <div class="what-to-eat-div what-to-eat-sm position-absolute top-50 start-50 translate-middle"><button class="what-to-eat">What to Eat?</button></div>
     </main>
 
     <!-- random food images landing zone -->
-<div id="choices-button-div" class="container text-center"><button class="choices-button mt-md-4 mb-md-4" id="still-hungry">More Choices?</button></div>
-    
+    <div class="d-inline" id="buttons-for-choices">
+    <button type="button" id="back-button" class="btn btn-outline-danger btn-lg"><</button>
+    <div id="choices-button-div" class="container text-center"><button class="choices-button mt-md-4 mb-md-4 btn-outline-danger" id="still-hungry">More Choices?</button></div>
+    <!-- <button type="button" id="forward-button" class="btn btn-outline-danger btn-lg align-right">></button>     -->
+    </div>
 
     <div class="container mb-4" id="random-img-container">
         <div class="row">
