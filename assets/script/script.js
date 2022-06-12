@@ -28,7 +28,7 @@ $(".choices-button").on("click", function(){
 function getUserLocation(){
     // TODO: Make this appear as a modal - keegan
     navigator.geolocation.getCurrentPosition(function(pos) {
-        console.log(pos)
+
         userLat = pos.latitude;
         userLon = pos.longitude;
         if (userLat && userLon){
@@ -69,7 +69,6 @@ function getRestuarantsByCity(city){
 
 
 function printRestaurantResults(data){
-    console.log(data);
     const resultsTitleEl = $("<h2>").text("Near You");
     $("#restaurant-list").append(resultsTitleEl);
     for (let i=0;i<data.businesses.length;i++){
@@ -79,9 +78,10 @@ function printRestaurantResults(data){
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-        const resultImage = $(`<img src=${imageUrl}>`)
-        // TODO: append and 'a' tag to the 'p' to bring us to the details section change line 83
-        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid black 2px"})
+        const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        resultItemEl.prepend(resultImage);
+        resultItemEl.on("click", (e)=>getRestaurantDetails(e.target.id));
         $("#restaurant-list").append(resultItemEl);
     }
     $("#restaurant-list").append("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>")
@@ -120,7 +120,6 @@ function getRestaurantDetails(id){
         return response.json();
     })
     .then(function(data) {
-        console.log(data)
         printRestaurantDetails(data)
 
     })
@@ -131,8 +130,13 @@ function printRestaurantDetails(data){
     var restaurantName = data.name;
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
-    var restaurantPhoto = data.photos[0]
-    //0 is Monday
+    var restaurantPhoto = data.image_url;
+    const detailsDivEl = $("#details-div");
+    const nameEl = $("<h3>").text(restaurantName);
+    const addressEl = $("<p>").text(restaurantAddress);
+    const phoneEl = $("<p>").text(restaurantPhone);
+    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"max-width": "400px", "border": "solid 2px black"});
+    detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
 }
 
 function getSearchedRestaurants(){
