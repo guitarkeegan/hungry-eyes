@@ -10,6 +10,8 @@ let searchedCity = "";
 let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
+let lastImageArray= [...randomImageArray];
+
 // event listeners
 $(".what-to-eat").on("click", function(){
     getRandomFoodImages();
@@ -99,6 +101,7 @@ function getRandomFoodImages(){
 
 function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
+    $("#back-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
     $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'})
@@ -135,6 +138,7 @@ function printRestaurantDetails(data){
 
 function storeSearchedArray (randomImageArray) {
     console.log(randomImageArray);
+
     
 }
 

@@ -55,7 +55,12 @@ button {
 .back-button:hover {
     color: var(--mwhite);
 }
+.random-img-div:hover {
+    opacity: 70%;
+}
 
+
+/* choices buttons */
 #back-button {
     font-size: 5vw;
     display: none;
