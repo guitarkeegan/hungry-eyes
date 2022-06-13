@@ -30,12 +30,22 @@ button, a.button {
     border-width: 5px;
     color: var(--mred);
 }
+.random-img-div:hover {
+    opacity: 75%;
+    border-color: var(--mred);
+}
+.random-img-div {
+    border-color: var(black);
+}
+
 
 .choices-button{
     display: none;
     margin: 0 auto;
 }
-
+.choices-button:hover {
+    color: var(--mwhite);
+}
 .what-to-eat-div {
     border-radius: 20px;
 }
