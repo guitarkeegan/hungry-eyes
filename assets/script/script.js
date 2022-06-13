@@ -201,7 +201,7 @@ function printRestaurantDetails(data){
 }
 
 function handleSearchError(){
-    $("#search-error-message-display").text(`A bad request was made to the server. Try searching by address, city, zipcode, etc. Try checking your preferences for sharing location data.`);
+    $("#search-error-message-display").text(`A bad request was made to the server. Try searching by address, city, zipcode, etc. Try checking your preferences for sharing location data. Follow the link for a demo request. https://cors-anywhere.herokuapp.com/corsdemo`);
     $("#searchErrorModal").modal('show');
 }
 
