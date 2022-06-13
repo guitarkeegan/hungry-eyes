@@ -79,7 +79,7 @@ function printRestaurantResults(data){
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img src=${imageUrl}>`)
         // TODO: append and a tag to the p to bring us to the details section
-        const resultItemEl = $(`<a href="#details-div" id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         $("#restaurant-list").append(resultItemEl);
         
     }
@@ -87,7 +87,7 @@ function printRestaurantResults(data){
     
 }
 // $(function () {
-//     $(${'<p id" ">').text.click(function() {
+//     $(${<p id" ").text.click(function() {
 //         console.log(click)
 //         $('#restaurant-list i').wrap('<a href="http://www.yelp.com"/>');
 //     });
