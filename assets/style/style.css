@@ -109,3 +109,13 @@ main{
 
 
 }
+
+.list {
+    font-size: 30px;
+    word-spacing: 20px;
+    letter-spacing: 2px;
+}
+
+.near {
+    font-size: 70px;
+}
