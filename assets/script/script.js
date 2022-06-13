@@ -79,11 +79,20 @@ function printRestaurantResults(data){
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img src=${imageUrl}>`)
         // TODO: append and a tag to the p to bring us to the details section
-        const resultItemEl = $(`<p id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        const resultItemEl = $(`<a href="#details-div" id='${id}' class='result-item'>`).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         $("#restaurant-list").append(resultItemEl);
+        
     }
     $("#restaurant-list").append("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>")
+    
 }
+// $(function () {
+//     $(${'<p id" ">').text.click(function() {
+//         console.log(click)
+//         $('#restaurant-list i').wrap('<a href="http://www.yelp.com"/>');
+//     });
+// });
+
 
 function getRandomFoodImages(){
     randomImageArray = [];
