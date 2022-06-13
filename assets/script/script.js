@@ -6,6 +6,10 @@ let userInputLocation = "";
 let resultsLimit = 5;
 let id = "";
 let randomImageArray = [];
+
+//local storage logic
+
+
 const borderSpinner = $(".spinner-border");
 // event listeners
 $(".what-to-eat").on("click", function(){
@@ -16,6 +20,23 @@ $(".what-to-eat").on("click", function(){
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
+
+    // put in searched term in local storage or increment if it already exists
+    if (localStorage.getItem(searchedTerm)) {
+        var countToInt = localStorage.getItem(searchedTerm);
+        countToInt = parseInt(countToInt);
+        console.log(countToInt);
+        countToInt++;
+        console.log(countToInt)
+        countToInt = countToInt.toString();
+        console.log(countToInt);
+        localStorage.setItem(searchedTerm, countToInt);
+    } else {
+        console.log("hit else");
+        localStorage.setItem(searchedTerm, "1");
+    }
+
+    // check to see if the user has allowed access to their location, else ask for user input
     if (userLat  && userLon){
         getRestaurantsByLatLon(userLat, userLon)
     } else if (userInputLocation){
