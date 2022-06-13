@@ -40,9 +40,13 @@ function getUserLocation(){
 }
 
 function showModal(){
-    return
+    var cityName = window.prompt("Enter a city")
+    console.log(cityName);
+while(!isNaN(cityName)){ 
+    cityName = window.prompt("You must use alphabetical characters")
 }
-
+return cityName;
+}
 
 function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
@@ -135,7 +139,7 @@ function printRestaurantDetails(data){
     
     //0 is Monday
 }
-
+getUserLocation()
 // TODO: CREATE FUNCTION FOR LOCAL STORAGE
 // TODO: Get from local storage function
 // TODO: display from local storage function
