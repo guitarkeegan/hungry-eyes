@@ -85,7 +85,7 @@ button, a.button {
     background-color: var(--mred);
 }
 
-.result-item{
+p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: larger;
     
