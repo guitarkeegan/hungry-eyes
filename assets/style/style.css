@@ -35,9 +35,13 @@ button, a.button {
     border-color: var(--mred);
 }
 .random-img-div {
-    border-color: var(black);
+    border-width: 2px;
+    border-color: var(white);
+    border-radius: 20%;
 }
-
+.result-item:hover {
+    opacity: 75%;
+}
 
 .choices-button{
     display: none;
