@@ -144,7 +144,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style', '')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid black 2px'});
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid var(--mred) 2px'});
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
@@ -186,7 +186,7 @@ function printRestaurantDetails(data){
     const nameEl = $("<h3>").text(restaurantName);
     const addressEl = $("<p>").text(restaurantAddress);
     const phoneEl = $("<p>").text(restaurantPhone);
-    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px black"});
+    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px var(--mred)"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
     
