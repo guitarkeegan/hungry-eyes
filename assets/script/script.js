@@ -18,8 +18,10 @@ $(".random-img-div").on("click", function(event){
     searchedTerm = urlArray[urlArray.length - 2];
     if (userLat  && userLon){
         getRestaurantsByLatLon(userLat, userLon)
+    } else if (userInputLocation){
+        getRestuarantsByCity(userInputLocation);
     } else {
-        getUserLocation()
+        getUserLocation();
     }
 });
 $(".choices-button").on("click", function(){
@@ -112,7 +114,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style', '')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid black 2px'});
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
