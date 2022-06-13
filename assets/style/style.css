@@ -15,6 +15,7 @@ body {
 
 h1 {
     font-size: calc(4.375rem + 1.5vw);
+    
     /* change the rem value if we want to change the size */
 }
 
@@ -32,7 +33,10 @@ button, a.button {
 }
 .random-img-div:hover {
     opacity: 75%;
+    color: var(--mwhite);
+    display: border;
     border-color: var(--mred);
+    cursor: pointer;
 }
 .random-img-div {
     border-width: 2px;
@@ -41,7 +45,12 @@ button, a.button {
 }
 .result-item:hover {
     opacity: 75%;
+    cursor: pointer;
 }
+.user-details-section {
+    animation: alternate var(--mwhite);
+}
+
 
 .choices-button{
     display: none;
@@ -61,10 +70,11 @@ button, a.button {
     font-size: smaller;
 }
 
-.still-hungry-link{
+.still-hungry-link {
     text-decoration: none;
     color:#cc2b1f;
     font-size: 2rem;
+    border-width: 2vw;
 }
 
 .finished-loading{
@@ -113,4 +123,14 @@ main{
     }
 
 
+}
+
+.list {
+    font-size: 30px;
+    word-spacing: 20px;
+    letter-spacing: 2px;
+}
+
+.near {
+    font-size: 70px;
 }
