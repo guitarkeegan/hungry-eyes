@@ -39,14 +39,20 @@ function getUserLocation(){
     })
 }
 
+// function showModal(){
+//     var cityName = window.prompt("Enter a city")
+//     console.log(cityName);
+// while(!isNaN(cityName)){ 
+//     cityName = window.prompt("You must use alphabetical characters")
+// }
+// return cityName;
+// }
+
 function showModal(){
-    var cityName = window.prompt("Enter a city")
-    console.log(cityName);
-while(!isNaN(cityName)){ 
-    cityName = window.prompt("You must use alphabetical characters")
+    var modal = document.querySelector(".modal")
+    
 }
-return cityName;
-}
+
 
 function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
