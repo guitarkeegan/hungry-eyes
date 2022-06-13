@@ -95,3 +95,13 @@ main{
 
 
 }
+
+.list {
+    font-size: 30px;
+    word-spacing: 20px;
+    letter-spacing: 2px;
+}
+
+.near-you-title {
+    font-size: 100px;
+}

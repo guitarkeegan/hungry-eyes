@@ -101,7 +101,7 @@ function getRestuarantsByCity(location){
 function printRestaurantResults(data){
     $("#restaurant-list").empty()
     const resultsTitleEl = $("<h2>").text("Near You");
-    $("#restaurant-list").append(resultsTitleEl);
+    $("#restaurant-list" ).append(resultsTitleEl)
     for (let i=0;i<data.businesses.length;i++){
         const id = data.businesses[i].id;
         const name = data.businesses[i].name;
@@ -110,7 +110,7 @@ function printRestaurantResults(data){
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
         const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid black 2px"})
-        const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
+        const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`).addClass('list');
         resultItemEl.prepend(resultImage);
         resultItemEl.on("click", (e)=>{
             if (e.target.id){
