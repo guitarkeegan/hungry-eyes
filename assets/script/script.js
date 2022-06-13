@@ -100,8 +100,10 @@ function getRestuarantsByCity(location){
 
 function printRestaurantResults(data){
     $("#restaurant-list").empty()
-    const resultsTitleEl = $("<h2>").text("Near You");
-    $("#restaurant-list").append(resultsTitleEl);
+    const resultsTitleEl = $("<h2>").text("Near You").addClass("near");
+    var icon = $('<span class="material-symbols-outlined">explore</span>');
+    resultsTitleEl.append(icon)
+    $("#restaurant-list" ).append(resultsTitleEl)
     for (let i=0;i<data.businesses.length;i++){
         const id = data.businesses[i].id;
         const name = data.businesses[i].name;
