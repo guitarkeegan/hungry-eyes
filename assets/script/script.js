@@ -101,9 +101,7 @@ function getRestuarantsByCity(location){
 function printRestaurantResults(data){
     $("#restaurant-list").empty()
     const resultsTitleEl = $("<h2>").text("Near You").addClass("near");
-    var icon = $('<span class="material-symbols-outlined">explore</span>');
-    resultsTitleEl.append(icon)
-    $("#restaurant-list" ).append(resultsTitleEl)
+    $("#restaurant-list").append(resultsTitleEl);
     for (let i=0;i<data.businesses.length;i++){
         const id = data.businesses[i].id;
         const name = data.businesses[i].name;
@@ -146,7 +144,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style', '')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid var(--mred) 2px'});
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid black 2px'});
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
@@ -188,7 +186,7 @@ function printRestaurantDetails(data){
     const nameEl = $("<h3>").text(restaurantName);
     const addressEl = $("<p>").text(restaurantAddress);
     const phoneEl = $("<p>").text(restaurantPhone);
-    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px var(--mred)"});
+    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px black"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
     
