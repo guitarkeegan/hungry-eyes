@@ -18,6 +18,7 @@ $(".what-to-eat").on("click", function(){
 .on("click", ()=>getRandomFoodImages());
 // random food images
 $(".random-img-div").on("click", function(event){
+
     const urlArray = event.target.style.backgroundImage.split("/");
     searchedTerm = urlArray[urlArray.length - 2];
 
@@ -193,6 +194,8 @@ function printRestaurantDetails(data){
     const getDirectionsEl = $(`<p><a href='https://www.google.com/maps/place/${restaurantAddress}'>Get directions</a></p>`);
     const goToYelpEl = $(`<a>`).attr("href", data.url).text("Check them out on Yelp!");
     detailsMapDivEl.append(directionsHeaderEl, getDirectionsEl, goToYelpEl);
+    // update the user on their past searches
+    printUserStats();
 }
 
 function handleSearchError(){
@@ -200,13 +203,23 @@ function handleSearchError(){
     $("#searchErrorModal").modal('show');
 }
 
+function printUserStats(){
+    $("#user-details-div").empty();
+    let keysArray = [];
+    for (let i=0; i<localStorage.length;i++){
+        keysArray.push(localStorage.key(i));
+    }
+    console.log(keysArray);
+    let commentEl = $("<h3>").text(`Look at you! Here are your search stats:`);
+    $("#user-details-div").append(commentEl);
+    for (let i=0; i<keysArray.length; i++){
+        const userStat = $("<p>").text(`Clicked on ${keysArray[i]} ${localStorage.getItem(keysArray[i])} time/s`);
+        $("#user-details-div").append(userStat);
+    }
+}
+
 navigator.geolocation.getCurrentPosition(function(pos) {
     userLat = pos.coords.latitude;
     userLon = pos.coords.longitude;
     });
 
-
-
-// TODO: CREATE FUNCTION FOR LOCAL STORAGE
-// TODO: Get from local storage function
-// TODO: display from local storage function
