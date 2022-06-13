@@ -26,17 +26,19 @@ $(".choices-button").on("click", function(){
     getRandomFoodImages();
 });
 $("#back-button").on("click", function(){
-    localStorageShit();
-    printRandomFoodImages(oldImages);
+    localStorageSave();
+    // printOldFoodImages();
+   
 });
-function localStorageShit(){
+function localStorageSave(){
     
-
-
-    console.log(globalImagesArray);
-    //var oldImages =JSON.parse(localStorage.getItem(globalImageArray);
-    var oldImages=localStorage.getItem(JSON.parse([0], globalImagesArray));
-    console.log(oldImages);
+    var oldImages=JSON.parse(localStorage.getItem('old-Images'));
+        for (var i=0; i< oldImages.length; i++) {
+               console.log(oldImages); 
+               printRandomFoodImages(oldImages[i].id, oldImages);
+        }
+    
+    // console.log(oldImages);
     //parse the info back
     //call a printrandomfooimages functionfunction to display it back to the og part
 }
@@ -45,7 +47,7 @@ function localStorageShit(){
 function getUserLocation(){
     // TODO: Make this appear as a modal
     navigator.geolocation.getCurrentPosition(function(pos) {
-        console.log(pos)
+        // console.log(pos)
         userLat = pos.latitude;
         userLon = pos.longitude;
         if (userLat && userLon){
@@ -104,28 +106,38 @@ function printRestaurantResults(data){
 }
 
 function getRandomFoodImages(){
-    randomImageArray = [];
+    var randomImageArray = [];
+        globalImagesArray = [];
     for (let i=0;i<6;i++){
         fetch("https://foodish-api.herokuapp.com/api/")
         .then(response=>response.json())
         .then(data=>{
+            // console.log(data);
             randomImageArray.push(data.image);
-            globalImagesArray.push(data.image);
-            localStorage.setItem(i, JSON.stringify(data.image));
-            printRandomFoodImages(i);
+            var imageObject={
+                id: i,
+                srcLink: data.image
+            }
+            // console.log(imageObject);
+            globalImagesArray.push(imageObject);
+            localStorage.setItem('old-Images', JSON.stringify(globalImagesArray));
+            printRandomFoodImages(i, randomImageArray);
         })
     }
     //console.log(globalImagesArray);
     //localStorage.setItem(globalImagesArray, JSON.stringify(globalImagesArray));
 }
 
-function printRandomFoodImages(imageArrayIndex){
+function printRandomFoodImages(imageArrayIndex, randomImageArray){
+    console.log(randomImageArray);
     $(".choices-button").css({'display': 'block'});
     $("#back-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style','')
     $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
-    // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
+    // console.log(imageArrayIndex);
+    // console.log(randomImageArray);
+    //$(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
 
@@ -155,13 +167,13 @@ function printRestaurantDetails(data){
    //0 is Monday
 }
 
-function printOldFoodImages(oldImages){
-    randomImageArray = [];
+function printOldFoodImages(imageArrayIndex, randomImageArray){
+    console.log(randomImageArray)
     $(".choices-button").css({'display': 'block'});
     $("#back-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${oldImages}`).attr('style','')
-    $(`#${oldImages}`).css({'background-image':`url(${oldImages})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
+    $(`#${oldImages}`).css({'background-image':`url(${randomImageArray[imageArrayIndex].srcLink})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px'});
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
 
