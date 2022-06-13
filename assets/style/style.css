@@ -85,6 +85,11 @@ button, a.button {
     background-color: var(--mred);
 }
 
+.result-item{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    
+}
 @media screen and (max-width: 1024px) {}
 
 @media screen and (max-width: 767px) {
@@ -120,12 +125,9 @@ main{
 
 }
 
-.list {
-    font-size: 30px;
-    word-spacing: 20px;
-    letter-spacing: 2px;
-}
+
 
 .near {
     font-size: 70px;
+    word-spacing: 30px;
 }

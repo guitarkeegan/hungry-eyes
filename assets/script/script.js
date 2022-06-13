@@ -101,9 +101,7 @@ function getRestuarantsByCity(location){
 function printRestaurantResults(data){
     $("#restaurant-list").empty()
     const resultsTitleEl = $("<h2>").text("Near You").addClass("near");
-    var icon = $('<span class="material-symbols-outlined">explore</span>');
-    resultsTitleEl.append(icon)
-    $("#restaurant-list" ).append(resultsTitleEl)
+    $("#restaurant-list").append(resultsTitleEl);
     for (let i=0;i<data.businesses.length;i++){
         const id = data.businesses[i].id;
         const name = data.businesses[i].name;
@@ -111,7 +109,7 @@ function printRestaurantResults(data){
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid var(--mred) 2px", "border-radius": "5%"})
+        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid var(--mred) 2px", "border-radius": "5%", "margin-right":"25px"})
         const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         resultItemEl.prepend(resultImage);
         resultItemEl.on("click", (e)=>{
