@@ -54,7 +54,11 @@ function getRestaurantsByLatLon(lat, lon){
         }
     })
     .then(response => response.json())
-    .then(data => printRestaurantResults(data));
+    .then(data => printRestaurantResults(data))
+    .catch((err)=>{
+        handleSearchError()
+        console.log(err);
+    })
 }
 
 function getRestuarantsByCity(location){
@@ -64,7 +68,11 @@ function getRestuarantsByCity(location){
         }
     })
     .then(response=>response.json())
-    .then(data=>printRestaurantResults(data));
+    .then(data=>printRestaurantResults(data))
+    .catch((err)=>{
+        handleSearchError()
+        console.log(err);
+    })
 }
 
 
@@ -134,7 +142,10 @@ function getRestaurantDetails(id){
         printRestaurantDetails(data)
     
     })
-    .catch((err)=>console.log(err))
+    .catch((err)=>{
+        handleSearchError()
+        console.log(err);
+    })
 }
 
 function printRestaurantDetails(data){
@@ -161,10 +172,12 @@ function printRestaurantDetails(data){
     const getDirectionsEl = $(`<p><a href='https://www.google.com/maps/place/${restaurantAddress}'>Get directions</a></p>`);
     const goToYelpEl = $(`<a>`).attr("href", data.url).text("Check them out on Yelp!");
     detailsMapDivEl.append(directionsHeaderEl, getDirectionsEl, goToYelpEl);
-
-
 }
 
+function handleSearchError(){
+    $("#search-error-message-display").text(`A bad request was made to the server. Try searching by address, city, zipcode, etc. Try checking your preferences for sharing location data.`);
+    $("#searchErrorModal").modal('show');
+}
 
 navigator.geolocation.getCurrentPosition(function(pos) {
     userLat = pos.coords.latitude;
