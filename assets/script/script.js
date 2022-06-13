@@ -111,7 +111,7 @@ function printRestaurantResults(data){
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid black 2px"})
+        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid var(--mred) 2px", "border-radius": "5%"})
         const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         resultItemEl.prepend(resultImage);
         resultItemEl.on("click", (e)=>{
@@ -146,7 +146,7 @@ function printRandomFoodImages(imageArrayIndex){
     $(".choices-button").css({'display': 'block'});
     $("#choices-button-div").css({'text-align':'center'});
     $(`#${imageArrayIndex}`).attr('style', '')
-    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid var(--mred) 2px'});
+    $(`#${imageArrayIndex}`).css({'background-image':`url(${randomImageArray[imageArrayIndex]})`,'background-size':'cover','background-position': 'center center', 'width':'100%', 'min-height': '200px', 'border': 'solid var(--mred) 2px', "border-radius": "5%"});
     
     // $(`#${imageArrayIndex}`).append(`<img class='random-img' name='${randomImageArray[imageArrayIndex]}' src=${randomImageArray[imageArrayIndex]} />`);
 }
@@ -167,7 +167,7 @@ function getRestaurantDetails(id){
     
     })
     .catch((err)=>{
-        handleSearchError()
+        handleSearchError()``
         console.log(err);
     })
 }
@@ -188,7 +188,7 @@ function printRestaurantDetails(data){
     const nameEl = $("<h3>").text(restaurantName);
     const addressEl = $("<p>").text(restaurantAddress);
     const phoneEl = $("<p>").text(restaurantPhone);
-    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px var(--mred)"});
+    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", 'border': 'solid var(--mred) 2px', "border-radius": "5%"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
     
