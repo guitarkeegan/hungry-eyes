@@ -111,7 +111,7 @@ function printRestaurantResults(data){
         // searchedFoodImage
         const imageUrl = data.businesses[i].image_url;
         const phoneNumber = data.businesses[i].phone;
-        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid var(--mred) 2px", "border-radius": "5%"})
+        const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid var(--mred) 8px", "border-radius": "5%"})
         const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         resultItemEl.prepend(resultImage);
         resultItemEl.on("click", (e)=>{
@@ -201,7 +201,7 @@ function printRestaurantDetails(data){
 }
 
 function handleSearchError(){
-    $("#search-error-message-display").text(`A bad request was made to the server./n Try searching by address, city, zipcode, etc./n Try checking your preferences for sharing location data.`);
+    $("#search-error-message-display").text(`A bad request was made to the server. Try searching by address, city, zipcode, etc. Try checking your preferences for sharing location data.`);
     $("#searchErrorModal").modal('show');
 }
 
