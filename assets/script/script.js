@@ -11,6 +11,7 @@ const borderSpinner = $(".spinner-border");
 $(".what-to-eat").on("click", function(){
     getRandomFoodImages();
 })
+.on("click", ()=>getRandomFoodImages());
 // random food images
 $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
@@ -78,10 +79,17 @@ function printRestaurantResults(data){
         const resultImage = $(`<img>`).attr("src", imageUrl).css({height: '100px', width: '100px', border: "solid black 2px"})
         const resultItemEl = $(`<p>`).attr({"id": id, "class": "result-item"}).text(`${name} rating: ${rating}, phone: ${phoneNumber}`);
         resultItemEl.prepend(resultImage);
-        resultItemEl.on("click", (e)=>getRestaurantDetails(e.target.id));
+        resultItemEl.on("click", (e)=>{
+            if (e.target.id){
+                getRestaurantDetails(e.target.id);
+            }
+            
+        });
         $("#restaurant-list").append(resultItemEl);
     }
-    $("#restaurant-list").append("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>")
+    const stillHungryLinkEl = $("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>");
+    stillHungryLinkEl.on("click", ()=>getRandomFoodImages());
+    $("#restaurant-list").append(stillHungryLinkEl)
 }
 
 function getRandomFoodImages(){
@@ -107,6 +115,7 @@ function printRandomFoodImages(imageArrayIndex){
 
 
 function getRestaurantDetails(id){
+    console.log("id is " + id);
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,{
             headers: {
                 Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -118,9 +127,10 @@ function getRestaurantDetails(id){
     })
     .then(function(data) {
         printRestaurantDetails(data)
-
+    
     })
-};
+    .catch((err)=>console.log(err))
+}
 
 function printRestaurantDetails(data){
     // left side
@@ -136,7 +146,11 @@ function printRestaurantDetails(data){
     const imageEl = $("<img>").attr("src", restaurantPhoto).css({"max-width": "400px", "border": "solid 2px black"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
-    detailsMapDibEl = $(".details-map-div")
+    const detailsMapDivEl = $("#details-map-div")
+    const directionsHeaderEl = $(`<h3>Take me to ${searchedTerm} town!</h3>`);
+    const getDirectionsEl = $(`<p><a href='https://www.google.com/maps/place/${restaurantAddress}'>Get directions</a></p>`);
+    const goToYelpEl = $(`<a>`).attr("href", data.url).text("Check them out on Yelp!");
+    detailsMapDivEl.append(directionsHeaderEl, getDirectionsEl, goToYelpEl);
 
 
 }
