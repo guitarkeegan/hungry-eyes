@@ -186,7 +186,7 @@ function printRestaurantDetails(data){
     const nameEl = $("<h3>").text(restaurantName);
     const addressEl = $("<p>").text(restaurantAddress);
     const phoneEl = $("<p>").text(restaurantPhone);
-    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"max-width": "400px", "border": "solid 2px black"});
+    const imageEl = $("<img>").attr("src", restaurantPhoto).css({"width": "77vw", "max-width": "400px", "border": "solid 2px black"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
     
