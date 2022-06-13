@@ -67,6 +67,7 @@ function getRestuarantsByCity(location){
 
 
 function printRestaurantResults(data){
+    $("#restaurant-list").empty()
     const resultsTitleEl = $("<h2>").text("Near You");
     $("#restaurant-list").append(resultsTitleEl);
     for (let i=0;i<data.businesses.length;i++){
@@ -88,7 +89,10 @@ function printRestaurantResults(data){
         $("#restaurant-list").append(resultItemEl);
     }
     const stillHungryLinkEl = $("<a class='still-hungry-link' href='#choices-button-div'>Still hungry? Click to see more pictures!</a>");
-    stillHungryLinkEl.on("click", ()=>getRandomFoodImages());
+    stillHungryLinkEl.on("click", ()=>{
+        getRandomFoodImages()
+        $("#restaurant-list").empty()
+    });
     $("#restaurant-list").append(stillHungryLinkEl)
 }
 
@@ -115,7 +119,6 @@ function printRandomFoodImages(imageArrayIndex){
 
 
 function getRestaurantDetails(id){
-    console.log("id is " + id);
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,{
             headers: {
                 Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
@@ -133,20 +136,25 @@ function getRestaurantDetails(id){
 }
 
 function printRestaurantDetails(data){
-    // left side
-    console.log(data);
+    // left parent element
+    const detailsDivEl = $("#details-div");
+    // right parent element
+    const detailsMapDivEl = $("#details-map-div")
+    detailsDivEl.empty()
+    detailsMapDivEl.empty()
+// left side
     var restaurantName = data.name;
     var restaurantAddress = data.location.display_address.join("\n")
     var restaurantPhone = data.display_phone;
     var restaurantPhoto = data.image_url;
-    const detailsDivEl = $("#details-div");
+    
     const nameEl = $("<h3>").text(restaurantName);
     const addressEl = $("<p>").text(restaurantAddress);
     const phoneEl = $("<p>").text(restaurantPhone);
     const imageEl = $("<img>").attr("src", restaurantPhoto).css({"max-width": "400px", "border": "solid 2px black"});
     detailsDivEl.append(nameEl, addressEl, phoneEl, imageEl);
     // right side
-    const detailsMapDivEl = $("#details-map-div")
+    
     const directionsHeaderEl = $(`<h3>Take me to ${searchedTerm} town!</h3>`);
     const getDirectionsEl = $(`<p><a href='https://www.google.com/maps/place/${restaurantAddress}'>Get directions</a></p>`);
     const goToYelpEl = $(`<a>`).attr("href", data.url).text("Check them out on Yelp!");
