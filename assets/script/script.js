@@ -72,7 +72,7 @@ function getRestaurantsByLatLon(lat, lon){
     let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
-            Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
+            Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
         }
     })
     .then(response => response.json())
@@ -85,7 +85,7 @@ function getRestaurantsByLatLon(lat, lon){
 function getRestuarantsByCity(location){
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${location}&term=${searchedTerm}&limit=${resultsLimit}`,{
         headers: {
-            Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
+            Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
         }
     })
     .then(response=>response.json())
@@ -154,7 +154,7 @@ function printRandomFoodImages(imageArrayIndex){
 function getRestaurantDetails(id){
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,{
             headers: {
-                Authorization: "Bearer Klnnz8t9NTQXYdSXh_xINM4iG-gO-MuwhkpztrTsDv6qn56ed5zTt2oZM25jBkaVp4zAA4DTJVQg526evOA8_KrmRYFEoYK1cCsH4rbaAXeQTEH1cLns2vOLfgqiYnYx"
+                Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
             }
         
     })
