@@ -1,3 +1,4 @@
+// TODO: refactor local storage so as not to pull all of local storage
 // user info and search variables
 let userLat = "";
 let userLon = "";
