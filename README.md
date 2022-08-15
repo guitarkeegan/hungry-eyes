@@ -15,15 +15,18 @@
 
   ## Installation
 
-  To run locally, clone the project, then open up the index.html file in a browser of your choice.
+  To run locally, clone the project, then open up the index.html file in a browser of your choice. If you get a 404 error about a bad request, try checking the console if you have developer tools installed, and click on the suggestion about Heroku. This should fix the error, which is related to the site being hosted on Github pages. 
 
   ## Usage
 
-  > When you want to go out, but don't know what do eat, this site makes it easier to make that diecision. 
+  > When you want to go out, but don't know what do eat, this site makes it easier to make that decision. 
 
   ## Contributions
   
-  Armando, Marie, David, and Myself.
+  armando1236
+  prsoulman
+  marietheyee
+  guitarkeegan
 
   ## Tests
 
