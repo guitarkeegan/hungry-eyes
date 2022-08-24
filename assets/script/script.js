@@ -19,16 +19,17 @@ $(".random-img-div").on("click", function(event){
     const urlArray = event.target.style.backgroundImage.split("/");
     // the name of the food is then saved in a global varable.
     searchedTerm = urlArray[urlArray.length - 2];
+    const specialTag = "hungE_"
 
+    console.log(localStorage.getItem(specialTag + searchedTerm));
     // put in searched term in local storage or increment if it already exists
-    if (localStorage.getItem(searchedTerm)) {
-        var countToInt = localStorage.getItem(searchedTerm);
-        countToInt = parseInt(countToInt);
-        countToInt++;
-        countToInt = countToInt.toString();
-        localStorage.setItem(searchedTerm, countToInt);
+    if (localStorage.getItem(specialTag + searchedTerm)) {
+        let num = parseInt(localStorage.getItem(specialTag + searchedTerm));
+        num++;
+        localStorage.setItem(specialTag + searchedTerm, num);
+        
     } else {
-        localStorage.setItem(searchedTerm, "1");
+        localStorage.setItem(specialTag + searchedTerm, 1);
     }
 
     // check to see if the user has allowed access to their location through geolocation or user input
@@ -207,21 +208,21 @@ function handleSearchError(){
 // will give the user some fun insights into which foods they tend to click on.
 function printUserStats(){
     $("#user-details-div").empty();
-    let keysArray = [];
-    for (let i=0; i<localStorage.length;i++){
-        keysArray.push(localStorage.key(i));
-    }
     let commentEl = $("<h3>").text(`Look at you! Here are your search stats:`);
     $("#user-details-div").append(commentEl);
-    for (let i=0; i<keysArray.length; i++){
-        let pluralOrSingular = "";
-        if (parseInt(localStorage.getItem(keysArray[i])) > 1){
-            pluralOrSingular = "times";
-        } else {
-            pluralOrSingular = "time";
+
+    for (let i=0;i<localStorage.length;i++){
+        if (localStorage.key(i).slice(0, 5) === "hungE"){
+            let pluralOrSingular = "";
+            let searchedFood = localStorage.key(i);
+            if (localStorage.getItem(searchedFood) > 1){
+                pluralOrSingular = "times";
+            } else {
+                pluralOrSingular = "time";
+            }
+            const userStat = $("<p>").text(`Clicked on ${localStorage.key(i).slice(6)} ${localStorage.getItem(searchedFood)} ${pluralOrSingular}.`);
+            $("#user-details-div").append(userStat);
         }
-        const userStat = $("<p>").text(`Clicked on ${keysArray[i]} ${localStorage.getItem(keysArray[i])} ${pluralOrSingular}.`);
-        $("#user-details-div").append(userStat);
     }
 }
 // the user's geolocation will be requested at the start of there opening the app.
