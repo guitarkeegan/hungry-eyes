@@ -201,7 +201,7 @@ function printRestaurantDetails(data){
 }
 // will display a modal if there is a problem with any yelp fetch request. 
 function handleSearchError(){
-    $("#search-error-message-display").text(`A bad request was made to the server. Try searching by address, city, zipcode, etc. Try checking your preferences for sharing location data.`);
+    $("#search-error-message-display").text(`A bad request was made to the server. This might be a cors err. Try copying this into a seperate browser window and click 'Request access to the demo server: https://cors-anywhere.herokuapp.com/corsdemo`);
     $("#searchErrorModal").modal('show');
     userInputLocation = "";
 }
