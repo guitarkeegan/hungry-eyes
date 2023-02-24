@@ -5,6 +5,9 @@
   "repository": "git@github.com:guitarkeegan/hungry-eyes.git",
   "author": "guitarkeegan <keegananglim@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app"
+  },
   "dependencies": {
     "express": "^4.18.2"
   }
