@@ -5,7 +5,7 @@ const HOME_PATH = path.join(__dirname, "views/index.html")
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-const port = process.env.NODE_ENV || 3000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.sendFile(HOME_PATH, (err)=>console.error(err));
