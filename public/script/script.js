@@ -1,5 +1,3 @@
-// TODO: refactor local storage so as not to pull all of local storage
-// user info and search variables
 let userLat = "";
 let userLon = "";
 let searchedFoodImage = "";
@@ -21,7 +19,7 @@ $(".random-img-div").on("click", function(event){
     searchedTerm = urlArray[urlArray.length - 2];
     const specialTag = "hungE_"
 
-    console.log(localStorage.getItem(specialTag + searchedTerm));
+    
     // put in searched term in local storage or increment if it already exists
     if (localStorage.getItem(specialTag + searchedTerm)) {
         let num = parseInt(localStorage.getItem(specialTag + searchedTerm));
@@ -71,7 +69,7 @@ function getUserLocation(){
 // if the user has allowed their geolocation to be shared, this is the fetch that will run when they click
 // on an image.
 function getRestaurantsByLatLon(lat, lon){
-    let yelpEndpoint = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
+    let yelpEndpoint = `https://api.yelp.com/v3/businesses/search?term=${searchedTerm}&latitude=${lat}&longitude=${lon}&limit=${resultsLimit}`
     fetch(yelpEndpoint, {
         headers: {
             Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
@@ -85,7 +83,7 @@ function getRestaurantsByLatLon(lat, lon){
 }
 // if the user wrote a location in the modal input, this is the fetch that will be called.
 function getRestuarantsByCity(location){
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${location}&term=${searchedTerm}&limit=${resultsLimit}`,{
+    fetch(`https://api.yelp.com/v3/businesses/search?location=${location}&term=${searchedTerm}&limit=${resultsLimit}`,{
         headers: {
             Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
         }
@@ -154,7 +152,7 @@ function printRandomFoodImages(imageArrayIndex){
 
 // will get the details by id and call another function to display the response.
 function getRestaurantDetails(id){
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,{
+    fetch(`https://api.yelp.com/v3/businesses/${id}`,{
             headers: {
                 Authorization: "Bearer UuDi6LoSrihXVmnFk4gMeeS9r9hV0FzzKDeagfjpLUWrK-xuEfyP3Ju-EOBoI5sMak_nnSdtVPB3KiIFKHkK56Xk5SiNK5iXvQ0IXi5o9D7k0Op6nts4FluVN1P1YnYx"
             }
@@ -201,7 +199,7 @@ function printRestaurantDetails(data){
 }
 // will display a modal if there is a problem with any yelp fetch request. 
 function handleSearchError(){
-    $("#search-error-message-display").text(`A bad request was made to the server. This might be a cors err. Try copying this into a seperate browser window and click 'Request access to the demo server: https://cors-anywhere.herokuapp.com/corsdemo`);
+    $("#search-error-message-display").text(`A bad request was made to the server. `);
     $("#searchErrorModal").modal('show');
     userInputLocation = "";
 }
